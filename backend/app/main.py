@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes import auth as auth_router
+from app.routes import resume as resume_router
 
 app = FastAPI()
 
@@ -17,6 +18,7 @@ app.add_middleware(
 )
 
 app.include_router(auth_router.router, prefix="/auth", tags=["auth"])
+app.include_router(resume_router.router, prefix="/resume", tags=["resume"])
 
 @app.get("/")
 async def main():
