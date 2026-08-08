@@ -9,14 +9,26 @@ export default function Home() {
   const [file, setFile] = useState(null)
   const [jobDescription, setJobDescription] = useState('')
 
-  const handleSubmit = async (file: File | null, jobDescription: string) => {
+  const handleSubmit = async () => {
     if (!file) {
       console.error('No file selected')
       return
     }
-    const formData = new FormData()
-    formData.append('file', file)
-    const parseRes = await axios.post('http://localhost:8000/resume/parse', formData)
+    try {
+      const formData = new FormData()
+      formData.append('file', file)
+      const parseRes = await axios.post('http://localhost:8000/resume/parse', formData)
+
+      const scoreRes = await axios.post('http://localhost:8000/resume/score', {
+      resume_text: parseRes.data.text,
+      job_description: jobDescription
+      })
+
+      sessionStorage.setItem('score_result', JSON.stringify(scoreRes.data))
+      router.push('/dashboard')
+    } catch (error) {
+      console.error('Error submitting data:', error)
+    }
   }
 
   return (
