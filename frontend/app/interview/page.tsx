@@ -57,7 +57,7 @@ export default function Interview() {
         <main>
             <h1>{questions[currentQuestion]}</h1>
             <textarea value={answer} onChange={(e) => setAnswer(e.target.value)}></textarea>
-            <button type="submit" onClick={handleAnswer}></button>
+            <button type="submit" onClick={handleAnswer}>Submit Answer</button>
         </main>
     )
 }
