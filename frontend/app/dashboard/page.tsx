@@ -21,9 +21,9 @@ export default function Dashboard() {
                 <div>
                     <h2>Score Result</h2>
                     <p>Score: {scoreResult.ats_score}</p>
-                    <p>Strengths: {scoreResult.strengths.map((s, i) => <li key={i}>{s}</li>)}</p>
-                    <p>Weaknesses: {scoreResult.gaps.map((g, i) => <li key={i}>{g}</li>)}</p>
-                    <p>Recommendations: {scoreResult.rewrite_suggestions.map((r, i) => <li key={i}>{r}</li>)}</p>
+                    <p>Strengths: {scoreResult.strengths?.map((s, i) => <li key={i}>{s}</li>)}</p>
+                    <p>Weaknesses: {scoreResult.gaps?.map((g, i) => <li key={i}>{g}</li>)}</p>
+                    <p>Recommendations: {scoreResult.rewrite_suggestions?.map((r, i) => <li key={i}>{r}</li>)}</p>
                 </div>
             ) : (
                 <p>No score result available. Please submit your resume and job description first.</p>
