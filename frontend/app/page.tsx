@@ -27,6 +27,7 @@ export default function Home() {
       sessionStorage.setItem('score_result', JSON.stringify(scoreRes.data))
       sessionStorage.setItem('resume_text', parseRes.data.text)
       sessionStorage.setItem('job_description', jobDescription)
+      console.log("Score result stored in sessionStorage:", scoreRes.data)
       router.push('/dashboard')
     } catch (error) {
       console.error('Error submitting data:', error)

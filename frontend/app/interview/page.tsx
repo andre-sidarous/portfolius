@@ -19,13 +19,14 @@ export default function Interview() {
             answer: answer,
             job_description: sessionStorage.getItem('job_description')
         })
-        const newGrade = res.data.grade
-        setGrades([...grades, newGrade])
+        const newGrade = res.data
+        const updatedGrades = [...grades, newGrade]
+        setGrades(updatedGrades)
         setGrade(newGrade)
 
         if (currentQuestion + 1 >= questions.length) {
             const res = await axios.post('http://localhost:8000/interview/final', {
-                grades: [...grades, newGrade]
+                grades: updatedGrades
             })
             const finalGrade = res.data.final_grade
             sessionStorage.setItem('final_grade', JSON.stringify(res.data))
